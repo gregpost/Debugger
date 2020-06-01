@@ -1,0 +1,43 @@
+Три автоматические замены и одна ручная:
+
+/////////////// 1 ///////////////
+
+Find:
+(::.*\(.*\).*\n{)
+
+Replace:
+$1\n  qDebug() << "Function Name: " << Q_FUNC_INFO;
+
+File types:
+*.cpp
+
+/////////////// 2 ///////////////
+
+Find:
+(#ifndef (.*).*\n#define \2\n)
+
+Replace:
+$1#include <QDebug>\n
+
+File types:
+*.h
+
+/////////////// 3 ///////////////
+
+Find:
+(#pragma once.\n)
+
+Replace:
+$1#include <QDebug>\n
+
+File types:
+*.h
+
+/////////////// 4 ///////////////
+
+Вручную добавить #include <QDebug> в папке 
+C:\Projects\kometa_lungs\Plugins\ru.samsmu.gui.qt\src
+в файлы
+CloseConfirmDialog
+QAutoplanShortcutsDialog
+QAutoplanAboutDialog
